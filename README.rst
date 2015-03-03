@@ -1,5 +1,5 @@
 Duckface
-==================
+=====
 
 Javascript interfaces by duck typing!
 
@@ -20,7 +20,36 @@ Then use `RequireJS`_ to use the library::
 Usage
 ----
 
-*todo*
+Define a **Duckface** without arguments checking::
+
+    var ApiDriver = new Duckface('ApiDriver', ['fetchItems', 'addItem']);
+
+This will define a Duckface, with only a list of methods that should be implemented. How the methods are implemented is left to the implementing object.
+
+Define a **Duckface** with strict arguments checking::
+    
+    var ApiDriver = new Duckface('ApiDriver', {
+        fetchItems : function(page) {},
+        addItem : function(title, content, author) {}
+    });
+
+This will define a Duckface, with dummy methods on an object. The arguments of the dummy methods are strictly checked in the implementing object to ensure the defined contract is upheld.
+
+Check if an object implements correct interface::
+
+    function Raffler(driver)
+    {
+        Duckface.ensureImplements(driver, ApiDriver);
+    }
+
+Roadmap
+----
+
+A list of to-do's to reach a **1.0** release:
+
+* **Unit tests**: Decide on a unit testing framework, and cover the entire **Duckface** implementation
+* **TravisCI**:: Integrate with `TravisCI`_
 
 .. _Bower: http://bower.io/
 .. _RequireJS: http://www.requirejs.org/
+.. _TravisCI: http://travis-ci.org/
