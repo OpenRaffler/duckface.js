@@ -1,0 +1,15 @@
+{
+  "name": "duckface",
+  "version": "0.1",
+  "main": "src/duckface.js",
+  "license": "MIT",
+  "dependencies": {
+    "requirejs": "~2.1.16"
+  },
+  "keywords": [
+    "interface",
+    "duck typing",
+    "ducktyping"
+  ]
+}
+
