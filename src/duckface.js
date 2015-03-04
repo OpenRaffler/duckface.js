@@ -1,9 +1,13 @@
+if (typeof define !== 'function') {
+    var define = require('amdefine')(module);
+}
+
 /*
  * Code taken from http://jscriptpatterns.blogspot.be/2013/01/javascript-interfaces.html
  * and minimally modified for stricter method checking via
  * arguments inspection (http://stackoverflow.com/questions/1007981/how-to-get-function-parameter-names-values-dynamically-from-javascript)
  */
-define([], function () {
+define(function (require) {
     'use strict';
 
     function Duckface(objectName, methods) {
@@ -34,7 +38,7 @@ define([], function () {
         if (methods instanceof Object) {
             var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
             var ARGUMENT_NAMES = /([^\s,]+)/g;
-            function getParamNames(func) {
+            var getParamNames = function getParamNames(func) {
                 var fnStr = func.toString().replace(STRIP_COMMENTS, '');
                 var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
                 if(result === null) {
@@ -77,7 +81,7 @@ define([], function () {
                 }
 
                 // stricter checking
-                if (method.args !== null && method.args != getParamNames(object[method.name]) {
+                if (method.args !== null && method.args != getParamNames(object[method.name])) {
                     throw new Error("Method " + method.name + " does not adhere to the Duckface definition. Requires arguments '" + method.args.join("','") + "' in the method definition.");
                 }
             }
@@ -85,4 +89,4 @@ define([], function () {
     };
 
     return Duckface;
-};
+});

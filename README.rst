@@ -67,7 +67,7 @@ We aim to keep **Duckface** code coverage in unit tests as close to 100% as poss
 
 This will install required `NodeJS`_ modules.
 
-To run the tests, perform::
+To run the tests, perform from the project root::
 
     $ make test
 

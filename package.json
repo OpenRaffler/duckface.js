@@ -1,0 +1,8 @@
+{
+  "name": "Duckface",
+  "version": "0.1.1",
+  "devDependencies": {
+    "amdefine": "^0.1.0",
+    "mocha": "^2.1.0"
+  }
+}
