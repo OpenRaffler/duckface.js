@@ -51,8 +51,8 @@ Workflow
 1. Create an issue in the issue tracker of this repository
 2. Fork this repository into your own account
 3. Implement your bugfix/feature/... in a separate branch
-a. If it's a feature, use ``feature/`` prefix for you branch, followed by the issue number in the tracker. E.g. ``feature/#9`` 
-b. If it's not a feature, use ``issue/`` prefix for your branch, followed by the issue number in the tracker. E.g. ``issue/#12``
+    a. If it's a feature, use ``feature/`` prefix for you branch, followed by the issue number in the tracker. E.g. ``feature/#9`` 
+    b. If it's not a feature, use ``issue/`` prefix for your branch, followed by the issue number in the tracker. E.g. ``issue/#12``
 4. Create additional unit tests, or update existing ones
 5. Do a merge request back to this repository and wait for your PR to be accepted/declined
 
