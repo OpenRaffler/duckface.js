@@ -42,6 +42,36 @@ Check if an object implements correct interface::
         Duckface.ensureImplements(driver, ApiDriver);
     }
 
+Contributing
+----
+
+Workflow
+.....
+
+# Create an issue in the issue tracker of this repository
+# Fork this repository into your own account
+# Implement your bugfix/feature/... in a separate branch
+#. If it's a feature, use ``feature/`` prefix for you branch, followed by the issue number in the tracker. E.g. ``feature/#9`` 
+#. If it's not a feature, use ``issue/`` prefix for your branch, followed by the issue number in the tracker. E.g. ``issue/#12``
+# Create additional unit tests, or update existing ones
+# Do a merge request back to this repository and wait for your PR to be accepted/declined
+
+Unit testing
+.....
+
+We aim to keep **Duckface** code coverage in unit tests as close to 100% as possible. When contributing to **Duckface** you are strongly encouraged to keep the current code coverage from regressing.
+
+`Mocha`_ is used as the unit testing framework. Install it using `NPM`_::
+
+    $ npm install
+
+This will install required `NodeJS`_ modules.
+
+To run the tests, perform::
+
+    $ make test
+
+
 Roadmap
 ----
 
@@ -53,3 +83,6 @@ A list of to-do's to reach a **1.0** release:
 .. _Bower: http://bower.io/
 .. _RequireJS: http://www.requirejs.org/
 .. _TravisCI: http://travis-ci.org/
+.. _Mocha: http://mochajs.org/
+.. _NodeJS: http://nodejs.org/
+.. _NPM: https://www.npmjs.com/
