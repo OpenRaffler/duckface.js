@@ -26,7 +26,9 @@ Define a **Duckface** without arguments checking::
 
 This will define a Duckface, with only a list of methods that should be implemented. How the methods are implemented is left to the implementing object.
 
-Define a **Duckface** with strict arguments checking::
+Define a **Duckface** with strict arguments checking:
+
+.. code: javascript
     
     var ApiDriver = new Duckface('ApiDriver', {
         fetchItems : function(page) {},
