@@ -15,8 +15,16 @@ define(function (require) {
             throw new Error ("Duckface constructor called with " + arguments.length + "arguments, but expected exactly " + Duckface.length);
         }
 
-        if (!this.constructor == Duckface) {
+        if (this.constructor != Duckface) {
             throw new Error ("Duckface should be called as a constructor");
+        }
+
+        if (typeof objectName !== "string") {
+            throw new Error ("First argument should be a string");
+        }
+
+        if (!(methods instanceof Array || methods instanceof Object)) {
+            throw new Error ("Second argument should be an Array or Object");
         }
 
         this.name = objectName;
@@ -24,7 +32,7 @@ define(function (require) {
 
         if (methods instanceof Array) {
             for (var i = 0, len = methods.length; i < len; i++) {
-                if (typeof methods[i] !== 'string') {
+                if (typeof methods[i] !== "string") {
                     throw new Error ("Method names should be specified as strings");
                 }
 
@@ -33,9 +41,7 @@ define(function (require) {
                     args: null
                 });
             }
-        }
-
-        if (methods instanceof Object) {
+        } else if (methods instanceof Object) {
             var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
             var ARGUMENT_NAMES = /([^\s,]+)/g;
             var getParamNames = function getParamNames(func) {
