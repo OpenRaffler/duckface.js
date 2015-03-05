@@ -28,7 +28,7 @@ This will define a Duckface, with only a list of methods that should be implemen
 
 Define a **Duckface** with strict arguments checking:
 
-.. code: javascript
+.. code:: javascript
     
     var ApiDriver = new Duckface('ApiDriver', {
         fetchItems : function(page) {},
