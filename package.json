@@ -5,5 +5,9 @@
     "amdefine": "^0.1.0",
     "chai": "^2.1.1",
     "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "coveralls": "^2.11.2",
+    "mocha-lcov-reporter": "0.0.2"
   }
 }
