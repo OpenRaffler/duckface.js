@@ -8,11 +8,15 @@ Javascript interfaces by duck typing!
 Installation
 -----
 
-Use `Bower`_ to install **Duckface** into your project::
+Use `Bower`_ to install **Duckface** into your project:
+
+.. code:: console
 
     $ bower install duckface
 
-Then use `RequireJS`_ to use the library::
+Then use `RequireJS`_ to use the library:
+
+.. code:: javascript
 
     require(['duckface']);
 
@@ -20,13 +24,17 @@ Then use `RequireJS`_ to use the library::
 Usage
 ----
 
-Define a **Duckface** without arguments checking::
+Define a **Duckface** without arguments checking:
+
+.. code:: javascript
 
     var ApiDriver = new Duckface('ApiDriver', ['fetchItems', 'addItem']);
 
 This will define a Duckface, with only a list of methods that should be implemented. How the methods are implemented is left to the implementing object.
 
-Define a **Duckface** with strict arguments checking::
+Define a **Duckface** with strict arguments checking:
+
+.. code:: javascript
     
     var ApiDriver = new Duckface('ApiDriver', {
         fetchItems : function(page) {},
@@ -35,7 +43,9 @@ Define a **Duckface** with strict arguments checking::
 
 This will define a Duckface, with dummy methods on an object. The arguments of the dummy methods are strictly checked in the implementing object to ensure the defined contract is upheld.
 
-Check if an object implements correct interface::
+Check if an object implements correct interface:
+
+.. code:: javascript
 
     function Raffler(driver)
     {
@@ -61,13 +71,17 @@ Unit testing
 
 We aim to keep **Duckface** code coverage in unit tests as close to 100% as possible. When contributing to **Duckface** you are strongly encouraged to keep the current code coverage from regressing.
 
-`Mocha`_ is used as the unit testing framework. Install it using `NPM`_::
+`Mocha`_ is used as the unit testing framework. Install it using `NPM`_:
+
+.. code:: console
 
     $ npm install
 
 This will install required `NodeJS`_ modules.
 
-To run the tests, perform from the project root::
+To run the tests, perform from the project root:
+
+.. code:: console
 
     $ make test
 
@@ -78,7 +92,7 @@ Roadmap
 A list of to-do's to reach a **1.0** release:
 
 * **Unit tests**: Decide on a unit testing framework, and cover the entire **Duckface** implementation
-* **TravisCI**:: Integrate with `TravisCI`_
+* **TravisCI**: Integrate with `TravisCI`_
 
 .. _Bower: http://bower.io/
 .. _RequireJS: http://www.requirejs.org/
