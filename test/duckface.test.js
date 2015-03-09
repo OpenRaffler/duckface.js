@@ -1,8 +1,6 @@
 var assert = require("chai").assert;
 var Duckface = require("../src/duckface.js");
 
-// TODO write the tests...
-
 describe('Duckface', function(){
     describe('#constructor', function(){
         it('should throw error when no arguments are provided', function(){
@@ -104,6 +102,34 @@ describe('Duckface', function(){
         it('should be an instance of Duckface', function(){
             var d = new Duckface('Foo', []);
             assert.instanceOf(d, Duckface);
+        });
+
+        it('should add an object to internal property when a valid method-name and function signature are provided', function() {
+            var signatures = {
+                'foo':function(bar, baz) {},
+                'test':function() {}
+            };
+            var d = new Duckface('Dummy', signatures);
+            var keys = Object.keys(signatures);
+            assert.lengthOf(d.methods, keys.length);
+            for (var i =0; i < d.methods.length; i++) {
+                assert.isObject(d.methods[i]);
+                assert.lengthOf(Object.keys(d.methods[i]), 2);
+                assert.property(d.methods[i], 'name');
+                assert.property(d.methods[i], 'args');
+                var key = keys[i];
+                assert.equal(d.methods[i].name, key);
+                assert.isArray(d.methods[i].args);
+                if (i === 0) {
+                    assert.sameMembers(
+                        d.methods[i].args,
+                        ['bar', 'baz']
+                    );
+                }
+                if (i === 1) {
+                    assert.lengthOf(d.methods[i].args, 0);
+                }
+            }
         });
     });
 });

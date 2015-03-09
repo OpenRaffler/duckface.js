@@ -4,7 +4,7 @@ if (typeof define !== 'function') {
 
 /*
  * Code taken from http://jscriptpatterns.blogspot.be/2013/01/javascript-interfaces.html
- * and minimally modified for stricter method checking via
+ * and modified for stricter method checking via
  * arguments inspection (http://stackoverflow.com/questions/1007981/how-to-get-function-parameter-names-values-dynamically-from-javascript)
  */
 define(function (require) {
