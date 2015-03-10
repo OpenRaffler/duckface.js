@@ -132,4 +132,16 @@ describe('Duckface', function(){
             }
         });
     });
+
+
+    describe('#ensureImplements', function() {
+        it('should throw error when no arguments are provided', function(){
+            assert.throws(
+                function(){
+                    Duckface.ensureImplements();
+                },
+                Error
+            );
+        });
+    });
 });
