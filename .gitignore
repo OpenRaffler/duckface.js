@@ -3,3 +3,6 @@ vendor/*
 
 node_modules/*
 !node_modules/.gitkeep
+
+coverage/*
+!coverage/.gitkeep

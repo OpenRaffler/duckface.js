@@ -4,10 +4,10 @@ test:
 	@./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 
-test-w:
-	@./node_modules/.bin/mocha \
-		--reporter $(REPORTER) \
-		--growl \
-		--watch
+test-coverage:
+	@./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha \
 
-.PHONY: test test-w
+test-coveralls: test-coverage
+	@cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true
+
+.PHONY: test
