@@ -105,4 +105,5 @@ A list of to-do's to reach a **1.0** release:
 .. |travis-status| image:: https://travis-ci.org/OpenRaffler/duckface.js.svg?branch=master
     :target: https://travis-ci.org/OpenRaffler/duckface.js
 
-.. |coveralls-status| image:: https://coveralls.io/repos/OpenRaffler/duckface.js/badge.svg :target: https://coveralls.io/r/OpenRaffler/duckface.js
+.. |coveralls-status| image:: https://coveralls.io/repos/OpenRaffler/duckface.js/badge.svg
+    :target: https://coveralls.io/r/OpenRaffler/duckface.js
