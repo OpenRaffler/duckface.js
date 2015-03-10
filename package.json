@@ -9,6 +9,6 @@
     "istanbul": "^0.3.7"
   },
   "scripts": {
-    "test": "make test-coverage"
+    "test": "make test-coveralls"
   }
 }
