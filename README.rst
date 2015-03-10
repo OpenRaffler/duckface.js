@@ -1,4 +1,4 @@
-Duckface .. |travis-status|
+Duckface |travis-status|
 =====
 
 Javascript interfaces by duck typing!
