@@ -1,4 +1,4 @@
-Duckface
+Duckface .. |travis-status|
 =====
 
 Javascript interfaces by duck typing!
@@ -100,3 +100,7 @@ A list of to-do's to reach a **1.0** release:
 .. _Mocha: http://mochajs.org/
 .. _NodeJS: http://nodejs.org/
 .. _NPM: https://www.npmjs.com/
+
+
+.. |travis-status| image:: https://travis-ci.org/OpenRaffler/duckface.js.svg?branch=master
+    :target: https://travis-ci.org/OpenRaffler/duckface.js
