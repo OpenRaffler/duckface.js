@@ -24,7 +24,7 @@ describe('Duckface', function(){
         it('should throw error when not called as a constructor', function(){
             assert.throws(
                 function(){
-                    Duckface('foo', 'bar');
+                    Duckface('foo', ['bar']);
                 },
                 Error
             );
