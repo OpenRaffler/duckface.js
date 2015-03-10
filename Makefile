@@ -9,6 +9,6 @@ test-coverage:
 
 test-coveralls:
 	@./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && \
-		cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls
+		cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
 
 .PHONY: test
