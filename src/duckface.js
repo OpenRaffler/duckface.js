@@ -2,6 +2,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 
+
 /*
  * Code taken from http://jscriptpatterns.blogspot.be/2013/01/javascript-interfaces.html
  * and modified for stricter method checking via
@@ -9,6 +10,42 @@ if (typeof define !== 'function') {
  */
 define(function (require) {
     'use strict';
+
+    function getParamNames(func) {
+        var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+        var ARGUMENT_NAMES = /([^\s,]+)/g;
+        var fnStr = func.toString().replace(STRIP_COMMENTS, '');
+        var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+        if (result === null) {
+            result = [];
+        }
+        return result;
+    }
+    Array.prototype.equals = function (array) {
+        // if the other array is a falsy value, return
+        if (!array) {
+            return false;
+        }
+
+        // compare lengths - can save a lot of time 
+        if (this.length != array.length) {
+            return false;
+        }
+
+        for (var i = 0, l=this.length; i < l; i++) {
+            // Check if we have nested arrays
+            if (this[i] instanceof Array && array[i] instanceof Array) {
+                // recurse into the nested arrays
+                if (!this[i].equals(array[i])) {
+                    return false;       
+                }
+            } else if (this[i] != array[i]) { 
+                // Warning - two different object instances will never be equal: {x:20} != {x:20}
+                return false;   
+            }           
+        }       
+        return true;
+    }   
 
     function Duckface(objectName, methods) {
         if (arguments.length != Duckface.length) {
@@ -42,18 +79,6 @@ define(function (require) {
                 });
             }
         } else if (methods instanceof Object) {
-            var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-            var ARGUMENT_NAMES = /([^\s,]+)/g;
-            var getParamNames = function getParamNames(func) {
-                var fnStr = func.toString().replace(STRIP_COMMENTS, '');
-                var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
-                if(result === null) {
-                    result = [];
-                }
-                return result;
-            }
-
-
             var keys = Object.keys(methods);
 
             for (var i = 0, len = keys.length; i < len; i++) {
@@ -87,7 +112,7 @@ define(function (require) {
                 }
 
                 // stricter checking
-                if (method.args !== null && method.args != getParamNames(object[method.name])) {
+                if (method.args !== null && !method.args.equals(getParamNames(object[method.name]))) {
                     throw new Error("Method " + method.name + " does not adhere to the Duckface definition. Requires arguments '" + method.args.join("','") + "' in the method definition.");
                 }
             }

@@ -143,5 +143,112 @@ describe('Duckface', function(){
                 Error
             );
         });
+        it('should throw error when only 1 argument is provided', function(){
+            assert.throws(
+                function(){
+                    Duckface.ensureImplements({});
+                },
+                Error
+            );
+        });
+        it('should throw error when argument 2 is not a duckface', function(){
+            assert.throws(
+                function(){
+                    Duckface.ensureImplements({}, {});
+                },
+                Error
+            );
+        });
+        it('should throw error when argument bigger than 2 is not a duckface', function(){
+            assert.throws(
+                function(){
+                    var a = new Duckface('A', ['a']);
+                    var b = new Duckface('B', ['B']);
+                    Duckface.ensureImplements({}, a, b, {});
+                },
+                Error
+            );
+        });
+        it('should throw error when object does not implement all methods of a duckface', function(){
+            assert.throws(
+                function(){
+                    var a = new Duckface('A', ['a', 'b', 'c']);
+                    Duckface.ensureImplements({}, a);
+                },
+                Error
+            );
+        });
+        it('should not throw an error when object implements all methods of a duckface', function(){
+            assert.doesNotThrow(
+                function(){
+                    var a = new Duckface('A', ['a', 'b', 'c']);
+                    var obj = {
+                        a: function(){},
+                        b: function(){},
+                        c: function(){},
+                    };
+                    Duckface.ensureImplements(obj, a);
+                },
+                Error
+            );
+        });
+        it('should throw error when object does not implement all methods correctly of a duckface with function signatures', function(){
+            assert.throws(
+                function(){
+                    var methods = {
+                        a: function(foo, bar) {},
+                        b: function() {}
+                    };
+                    var a = new Duckface('A', methods);
+                    Duckface.ensureImplements({}, a);
+                },
+                Error
+            );
+            assert.throws(
+                function(){
+                    var methods = {
+                        a: function(foo, bar) {},
+                        b: function() {}
+                    };
+                    var a = new Duckface('A', methods);
+                    Duckface.ensureImplements({b:function(){}}, a);
+                },
+                Error
+            );
+        });
+        it('should throw error when object does not correctly implement all method signatures of a duckface', function(){
+            assert.throws(
+                function(){
+                    var methods = {
+                        a: function(foo, bar) {},
+                        b: function() {}
+                    };
+                    var a = new Duckface('A', methods);
+
+                    var impl = {
+                        a: function(foo) {},
+                        b: function(){}
+                    };
+                    Duckface.ensureImplements(impl, a);
+                },
+                Error
+            );
+            assert.doesNotThrow(
+                function(){
+                    var methods = {
+                        a: function(foo, bar) {},
+                        b: function() {}
+                    };
+                    var a = new Duckface('A', methods);
+
+                    var impl = {
+                        a: function(foo, bar) {},
+                        b: function(){}
+                    };
+                    Duckface.ensureImplements(impl, a);
+                },
+                Error
+            );
+        });
     });
 });
