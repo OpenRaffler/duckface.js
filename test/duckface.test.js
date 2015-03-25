@@ -252,3 +252,32 @@ describe('Duckface', function(){
         });
     });
 });
+
+
+describe('Array.prototype.equals', function() {
+    it('should return false when compared with a non-array', function(){
+        assert.isFalse([].equals('foo'));
+        assert.isFalse([].equals(true));
+        assert.isFalse([].equals(false));
+        assert.isFalse([].equals({}));
+        assert.isFalse([].equals(123));
+        assert.isFalse([].equals(123.45));
+    });
+
+    it('should return false when lengths are not the same', function() {
+        assert.isFalse(['foo'].equals([]));
+        assert.isFalse(['foo'].equals(['bar','baz']));
+    });
+
+    it('should return true when both arrays are empty', function() {
+        assert.isTrue([].equals([]));
+    });
+
+    it('should return false when sub-arrays are not equal', function() {
+        assert.isFalse([[]].equals([['foo']]));
+    });
+
+    it('should return false if at least one of the elements is different', function() {
+        assert.isFalse(['foo','bar','baz'].equals(['foo','bar','faz']));
+    });
+});
