@@ -52,7 +52,7 @@ define(function (require) {
             throw new Error ("Duckface constructor called with " + arguments.length + "arguments, but expected exactly " + Duckface.length);
         }
 
-        if (this.constructor != Duckface) {
+        if (typeof this === undefined || this.constructor != Duckface) {
             throw new Error ("Duckface should be called as a constructor");
         }
 
