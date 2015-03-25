@@ -1,6 +1,12 @@
 CHANGELOG
 =====
 
+0.5.0
+-----
+
+* Added unit tests: now at 100% coverage
+* Extracted `getParamNames` function
+
 0.4.0
 -----
 
