@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Duckface.js by OpenRaffler</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Duckface.js</h1>
+          <h2>Javascript interfaces by duck typing!</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/OpenRaffler/duckface.js/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/OpenRaffler/duckface.js/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/OpenRaffler/duckface.js" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="duckface--" class="anchor" href="#duckface--" aria-hidden="true"><span class="octicon octicon-link"></span></a>Duckface <a href="https://travis-ci.org/OpenRaffler/duckface.js"><img src="https://travis-ci.org/OpenRaffler/duckface.js.svg?branch=master" alt="travis-status"></a> <a href="https://coveralls.io/r/OpenRaffler/duckface.js"><img src="https://coveralls.io/repos/OpenRaffler/duckface.js/badge.svg" alt="coveralls-status"></a>
+</h1>
+
+<blockquote>
+<p>Javascript interfaces by duck typing!</p>
+</blockquote>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Use <a href="http://bower.io/">Bower</a> to install <strong>Duckface</strong> into your project:</p>
+
+<pre lang="sourceCode"><code>$ bower install duckface
+</code></pre>
+
+<p>Then use <a href="http://www.requirejs.org/">RequireJS</a> to use the library:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c1">require</span>([<span class="pl-s"><span class="pl-pds">'</span>duckface<span class="pl-pds">'</span></span>]);</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Define a <strong>Duckface</strong> without arguments checking:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> ApiDriver <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Duckface</span>(<span class="pl-s"><span class="pl-pds">'</span>ApiDriver<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>fetchItems<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>addItem<span class="pl-pds">'</span></span>]);</pre></div>
+
+<p>This will define a Duckface, with only a list of methods that should be implemented. How the methods are implemented is left to the implementing object.</p>
+
+<p>Define a <strong>Duckface</strong> with strict arguments checking:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> ApiDriver <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Duckface</span>(<span class="pl-s"><span class="pl-pds">'</span>ApiDriver<span class="pl-pds">'</span></span>, {
+    <span class="pl-en">fetchItems</span> : <span class="pl-k">function</span>(<span class="pl-smi">page</span>) {},
+    <span class="pl-en">addItem</span> : <span class="pl-k">function</span>(<span class="pl-smi">title</span>, <span class="pl-smi">content</span>, <span class="pl-smi">author</span>) {}
+});</pre></div>
+
+<p>This will define a Duckface, with dummy methods on an object. The arguments of the dummy methods are strictly checked in the implementing object to ensure the defined contract is upheld.</p>
+
+<p>Check if an object implements correct interface:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">function</span> <span class="pl-en">Raffler</span>(<span class="pl-smi">driver</span>)
+{
+    Duckface.ensureImplements(driver, ApiDriver);
+}</pre></div>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<h3>
+<a id="workflow" class="anchor" href="#workflow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Workflow</h3>
+
+<ol>
+<li> Create an issue in the issue tracker of this repository</li>
+<li> Fork this repository into your own account</li>
+<li>
+<p>Implement your bugfix/feature/… in a separate branch  </p>
+
+<ol>
+<li> If it’s a feature, use <code>feature/</code> prefix for you branch, followed by the issue number in the tracker. E.g. <code>feature/#9</code>
+</li>
+<li> If it’s not a feature, use <code>issue/</code> prefix for your branch, followed by the issue number in the tracker. E.g. <code>issue/#12</code>
+</li>
+</ol>
+</li>
+<li><p>Create additional unit tests, or update existing ones</p></li>
+<li> Do a merge request back to this repository and wait for your PR to be accepted/declined</li>
+</ol>
+
+<h3>
+<a id="unit-testing" class="anchor" href="#unit-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit testing</h3>
+
+<p>We aim to keep <strong>Duckface</strong> code coverage in unit tests as close to 100% as possible. When contributing to <strong>Duckface</strong> you are strongly encouraged to keep the current code coverage from regressing.</p>
+
+<p><a href="http://mochajs.org/">Mocha</a> is used as the unit testing framework. Install it using <a href="https://www.npmjs.com/">NPM</a>:</p>
+
+<div class="highlight highlight-console"><pre>$ <span class="pl-s1">npm install</span></pre></div>
+
+<p>This will install required <a href="http://nodejs.org/">NodeJS</a> modules.</p>
+
+<p>To run the tests, perform from the project root:</p>
+
+<div class="highlight highlight-console"><pre>$ <span class="pl-s1">make <span class="pl-c1">test</span></span></pre></div>
+        </section>
+
+        <footer>
+          Duckface.js is maintained by <a href="https://github.com/OpenRaffler">OpenRaffler</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
