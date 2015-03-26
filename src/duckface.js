@@ -1,14 +1,19 @@
-if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
-}
-
-
 /*
  * Code taken from http://jscriptpatterns.blogspot.be/2013/01/javascript-interfaces.html
  * and modified for stricter method checking via
  * arguments inspection (http://stackoverflow.com/questions/1007981/how-to-get-function-parameter-names-values-dynamically-from-javascript)
  */
-define(function (require) {
+
+
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    root.Duckface = root.Duckface || factory();
+  }
+})(this, function () {
     'use strict';
 
     function getParamNames(func) {
