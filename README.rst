@@ -2,7 +2,6 @@ Duckface v1.0.0 |travis-status| |coveralls-status|
 =====
 
     Javascript interfaces by duck typing!
-    --
 
 .. contents:: Table of Contents
 
