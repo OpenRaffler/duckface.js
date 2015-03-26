@@ -1,6 +1,7 @@
 {
   "name": "Duckface",
   "version": "0.5.0",
+  "homepage": "http://openraffler.github.io/duckface.js/",
   "devDependencies": {
     "amdefine": "^0.1.0",
     "chai": "^2.1.1",
