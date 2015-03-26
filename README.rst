@@ -1,7 +1,8 @@
-Duckface |travis-status| |coveralls-status|
+Duckface v1.0.0 |travis-status| |coveralls-status|
 =====
 
-Javascript interfaces by duck typing!
+    Javascript interfaces by duck typing!
+    --
 
 .. contents:: Table of Contents
 
@@ -14,11 +15,34 @@ Use `Bower`_ to install **Duckface** into your project:
 
     $ bower install duckface
 
-Then use `RequireJS`_ to use the library:
+Browsers
+....
+
+.. code:: html
+
+    <script src="path/to/duckface.js"></script>
+
+Browsers (using `RequireJS`_)
+....
 
 .. code:: javascript
 
     require(['duckface']);
+
+NodeJS
+....
+
+First install it as an NPM module:
+
+.. code:: console
+
+    $ npm install duckface
+
+Then use it in your project:
+
+.. code:: javascript
+
+    var Duckface = require('duckface');
 
 
 Usage
@@ -35,7 +59,7 @@ This will define a Duckface, with only a list of methods that should be implemen
 Define a **Duckface** with strict arguments checking:
 
 .. code:: javascript
-    
+
     var ApiDriver = new Duckface('ApiDriver', {
         fetchItems : function(page) {},
         addItem : function(title, content, author) {}
@@ -61,7 +85,7 @@ Workflow
 1. Create an issue in the issue tracker of this repository
 2. Fork this repository into your own account
 3. Implement your bugfix/feature/... in a separate branch
-    a. If it's a feature, use ``feature/`` prefix for you branch, followed by the issue number in the tracker. E.g. ``feature/#9`` 
+    a. If it's a feature, use ``feature/`` prefix for you branch, followed by the issue number in the tracker. E.g. ``feature/#9``
     b. If it's not a feature, use ``issue/`` prefix for your branch, followed by the issue number in the tracker. E.g. ``issue/#12``
 4. Create additional unit tests, or update existing ones
 5. Do a merge request back to this repository and wait for your PR to be accepted/declined
@@ -85,14 +109,6 @@ To run the tests, perform from the project root:
 
     $ make test
 
-
-Roadmap
-----
-
-A list of to-do's to reach a **1.0** release:
-
-* **Unit tests**: Decide on a unit testing framework, and cover the entire **Duckface** implementation
-* **TravisCI**: Integrate with `TravisCI`_
 
 .. _Bower: http://bower.io/
 .. _RequireJS: http://www.requirejs.org/
